@@ -1,13 +1,18 @@
 package org.example;
 
-import java.io.BufferedReader;
+import org.example.Commands.*;
+
 import java.util.ArrayList;
 
 public class EventHandler {
 
     public static void handler(ArrayList<String> command){
-        System.out.println("Handler");
         Create.create(command);
+        Select.select(command);
         Color.color(command);
+        Move.move(command);
+        Draw.draw(command);
+        DrawScene.drawScene(command);
+        Delete.delete(command);
     }
 }

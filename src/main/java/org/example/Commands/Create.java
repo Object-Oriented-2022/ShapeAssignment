@@ -1,17 +1,16 @@
-package org.example;
+package org.example.Commands;
 
 import java.util.ArrayList;
 
 public class Create {
     public static void create(ArrayList<String> command){
-        System.out.print("Create Class");
         if(command.get(0).equals("CREATE")) {
-            if(command.get(1).equals("Rectangle")) {
+            if(command.get(1).equals("RECTANGLE")) {
                 createRectangle(command);
-            } else if (command.get(1).equals("Circle")) {
+            } else if (command.get(1).equals("CIRCLE")) {
                 createCircle(command);
             } else {
-                System.out.println("Shape does note exist!");
+                System.out.println("Shape does not exist!");
             }
         }
     }
