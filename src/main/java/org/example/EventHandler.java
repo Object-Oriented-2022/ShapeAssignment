@@ -5,8 +5,9 @@ import java.util.ArrayList;
 
 public class EventHandler {
 
-    public static void handler(ArrayList<String>[] command){
+    public static void handler(ArrayList<String> command){
         System.out.println("Handler");
-
+        Create.create(command);
+        Color.color(command);
     }
 }
