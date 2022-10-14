@@ -15,4 +15,11 @@ public class Circle extends Shape{
     public void setRadius(String radius) {
         this.radius = radius;
     }
+
+    @Override
+    public String toString(){
+        return "Circle, Color: " + getColor() +
+                ", Origin: " + getOrigin() + ", Radius: "
+                + radius;
+    }
 }

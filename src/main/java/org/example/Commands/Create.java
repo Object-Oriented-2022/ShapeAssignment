@@ -12,6 +12,8 @@ public class Create {
 
     private static int creationNumber = 0;
 
+    private static Shape previousCreation = null;
+
     public static void create(ArrayList<String> command){
         if(command.get(0).equals("CREATE")) {
             if(command.get(1).equals("RECTANGLE")) {
@@ -31,7 +33,6 @@ public class Create {
         int idNum = creationNumber;
         Shape rectangle = new Rectangle(width, height, idNum);
         addShape(rectangle);
-        //System.out.println("Created Rectangle");
     }
 
     private static void createCircle(ArrayList<String> command) {
@@ -40,7 +41,6 @@ public class Create {
         int idNum = creationNumber;
         Shape circle = new Circle(radius, idNum);
         addShape(circle);
-        //System.out.println("Created Circle");
     }
 
 }

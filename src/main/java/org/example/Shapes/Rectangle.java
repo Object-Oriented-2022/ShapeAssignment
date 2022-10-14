@@ -26,4 +26,10 @@ public class Rectangle extends Shape{
         this.height = height;
     }
 
+    @Override
+    public String toString(){
+        return "Rectangle, Color: " + getColor() +
+                ", Origin: " + getOrigin() + ", Width: "
+                + width + ", Height: " + height;
+    }
 }

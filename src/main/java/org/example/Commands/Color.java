@@ -2,9 +2,12 @@ package org.example.Commands;
 
 import java.util.ArrayList;
 
+import static org.example.ListHandler.State.*;
+
 public class Color {
 
     private static final String[] validColors = {"Red", "Blue", "Yellow", "Orange", "Green"};
+    private static String previousColor = "";
 
     public static void color (ArrayList<String> command){
         if(command.get(0).equals("COLOR")) {
@@ -29,6 +32,10 @@ public class Color {
     }
 
     private static void changeColor(String color) {
-        System.out.println("Color Changed: " + color);
+        if(previousColor == null)
+            previousColor.equals(color);
+        else
+            previousColor.equals(getCurrentColor());
+        updateColor(color);
     }
 }

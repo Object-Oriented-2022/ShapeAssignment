@@ -17,6 +17,18 @@ public class State {
         selectedShape = null;
     }
 
+    public static String getCurrentColor(){
+        return selectedShape.getColor();
+    }
+
+    public static void updateColor(String color){
+        selectedShape.setColor(color);
+    }
+
+    public static void drawShape(){
+        System.out.println(selectedShape.toString());
+    }
+
 
 }
 
