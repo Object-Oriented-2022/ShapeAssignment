@@ -13,6 +13,10 @@ public class State {
         existingShapes.add(shape);
     }
 
+    public static void resetShape(){
+        selectedShape = null;
+    }
+
 
 }
 
