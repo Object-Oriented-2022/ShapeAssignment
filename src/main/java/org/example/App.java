@@ -3,7 +3,6 @@ package org.example;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.logging.Handler;
 
 /**
  * Hello world!
