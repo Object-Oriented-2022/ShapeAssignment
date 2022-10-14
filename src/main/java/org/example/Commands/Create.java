@@ -1,8 +1,17 @@
 package org.example.Commands;
 
+import org.example.Shapes.Circle;
+import org.example.Shapes.Rectangle;
+import org.example.Shapes.Shape;
+
 import java.util.ArrayList;
 
+import static org.example.ListHandler.State.addShape;
+
 public class Create {
+
+    private static int creationNumber = 0;
+
     public static void create(ArrayList<String> command){
         if(command.get(0).equals("CREATE")) {
             if(command.get(1).equals("RECTANGLE")) {
@@ -16,10 +25,22 @@ public class Create {
     }
 
     private static void createRectangle(ArrayList<String> command) {
-        System.out.println("Created Rectangle");
+        String width = command.get(2);
+        String height = command.get(3);
+        creationNumber++;
+        int idNum = creationNumber;
+        Shape rectangle = new Rectangle(width, height, idNum);
+        addShape(rectangle);
+        //System.out.println("Created Rectangle");
     }
 
     private static void createCircle(ArrayList<String> command) {
-        System.out.println("Created Circle");
+        String radius = command.get(2);
+        creationNumber++;
+        int idNum = creationNumber;
+        Shape circle = new Circle(radius, idNum);
+        addShape(circle);
+        //System.out.println("Created Circle");
     }
+
 }
