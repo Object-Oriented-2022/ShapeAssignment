@@ -11,7 +11,6 @@ import static org.example.ListHandler.State.addShape;
 public class Create {
 
     private static int creationNumber = 0;
-
     private static Shape previousCreation = null;
 
     public static void create(ArrayList<String> command){
@@ -33,6 +32,7 @@ public class Create {
         int idNum = creationNumber;
         Shape rectangle = new Rectangle(width, height, idNum);
         addShape(rectangle);
+        previousCreation = rectangle;
     }
 
     private static void createCircle(ArrayList<String> command) {
@@ -41,6 +41,7 @@ public class Create {
         int idNum = creationNumber;
         Shape circle = new Circle(radius, idNum);
         addShape(circle);
+        previousCreation = circle;
     }
 
 }

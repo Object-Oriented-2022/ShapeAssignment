@@ -25,10 +25,19 @@ public class State {
         selectedShape.setColor(color);
     }
 
-    public static void drawShape(){
-        System.out.println(selectedShape.toString());
+    public static void drawShape(Shape shape){
+        System.out.println(shape.toString());
     }
 
+    public static void drawSelectedShape(){
+        drawShape(selectedShape);
+    }
+
+    public static void drawExistingShapes(){
+        for (Shape existingShape : existingShapes) {
+            drawShape(existingShape);
+        }
+    }
 
 }
 
