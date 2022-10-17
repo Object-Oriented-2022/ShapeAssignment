@@ -32,10 +32,7 @@ public class Color {
     }
 
     private static void changeColor(String color) {
-        if(previousColor != "")
-            previousColor.equals(getCurrentColor());
-        //else
-        //    previousColor.equals(getCurrentColor());
+        previousColor = getCurrentColor();
         updateColor(color);
     }
 
