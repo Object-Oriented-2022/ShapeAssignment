@@ -12,4 +12,9 @@ public class Move {
     private static void setCoordinates(String x, String y) {
         System.out.println("Move: " + x + " " + y);
     }
+
+    /*TODO: MOVE UNDO
+     private static void undo(){
+
+     }*/
 }

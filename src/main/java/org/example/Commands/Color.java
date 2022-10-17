@@ -32,10 +32,15 @@ public class Color {
     }
 
     private static void changeColor(String color) {
-        if(previousColor == null)
-            previousColor.equals(color);
-        else
+        if(previousColor != "")
             previousColor.equals(getCurrentColor());
+        //else
+        //    previousColor.equals(getCurrentColor());
         updateColor(color);
     }
+
+    /*TODO: COLOR UNDO
+     private static void undo(){
+
+     }*/
 }

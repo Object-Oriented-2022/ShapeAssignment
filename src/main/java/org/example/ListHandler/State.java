@@ -39,5 +39,9 @@ public class State {
         }
     }
 
+    public static void removeFromExisting(){
+        existingShapes.remove(selectedShape);
+    }
+
 }
 
