@@ -40,7 +40,10 @@ public class State {
     }
 
     public static void removeFromExisting(){
-        existingShapes.remove(selectedShape);
+        boolean output = existingShapes.remove(selectedShape);
+        if(!output){
+            System.out.println("Selected Shape does not exist");
+        }
         //TODO: PREVIOUS SELECTED IN STATE OR IN SELECT? is it undo in select?
         //resetSelected();
     }
