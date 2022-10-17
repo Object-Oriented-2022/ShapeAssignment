@@ -41,7 +41,15 @@ public class State {
 
     public static void removeFromExisting(){
         existingShapes.remove(selectedShape);
+        //TODO: PREVIOUS SELECTED IN STATE OR IN SELECT? is it undo in select?
+        //resetSelected();
     }
+
+    /*TODO REMOVE OR FINISH
+    private static void resetSelected() {
+
+    }*/
+
 
 }
 

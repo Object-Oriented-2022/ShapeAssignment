@@ -23,10 +23,11 @@ public class Delete {
     private static void deleteShape() {
         previousDeleted = selectedShape;
         removeFromExisting();
+        //resetSelected();
     }
 
     /*TODO: DELETE UNDO
     private static void undo(){
-
+        //resetSelected to previous SELECTED
     }*/
 }
