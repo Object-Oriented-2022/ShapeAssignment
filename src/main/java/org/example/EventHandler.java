@@ -1,6 +1,7 @@
 package org.example;
 
 import org.example.Commands.*;
+import static org.example.Caretaker.saveCommand;
 
 import java.util.ArrayList;
 
@@ -19,17 +20,43 @@ public class EventHandler {
                        if undo assign to previous color
                        but how do we reassign the previous previous color?
         */
-        Create.create(command);
-        Select.select(command);
-
-        Commands color = new Color();
-        color.execute(command);
-
-        Move.move(command);
-        Draw.draw(command);
-        DrawScene.drawScene(command);
-        Delete.delete(command);
-        Undo.execute(command);
-
+        //Commands successfulCommand;
+        boolean success = false;
+        switch(command.get(0)){
+            case "CREATE":
+                Create.create(command);
+                break;
+            case "SELECT":
+                Select.select(command);
+                break;
+            case "COLOR":
+                Commands color = new Color();
+                success = color.execute(command);
+                if(success){
+                    saveCommand(color);
+                }
+                break;
+            case "MOVE":
+                Move.move(command);
+                break;
+            case "DRAW":
+                Draw.draw(command);
+                break;
+            case "DRAWSCENE":
+                DrawScene.drawScene(command);
+                break;
+            case "DELETE":
+                Delete.delete(command);
+                break;
+            case "UNDO":
+                Commands undo = new Undo();
+                if(!undo.execute(command)){
+                    System.out.println("Error Undoing.");
+                }
+                break;
+            default:
+                System.out.println("Command DNE");
+                break;
+        }
     }
 }

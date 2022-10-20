@@ -1,33 +1,29 @@
 package org.example.Commands;
 
 import java.util.ArrayList;
-
-import static org.example.Caretaker.saveCommand;
 import static org.example.ListHandler.State.*;
 
 public class Color extends Commands{
 
     private static final String[] validColors = {"Red", "Blue", "Yellow", "Orange", "Green"};
-    private static String previousColor = "";
+    private static String previousColor;
 
-    public Color() {
-        //Empty
+    public Color(){
+        previousColor = "";
     }
-
-    public void execute(ArrayList<String> command) {
-        if(selectedShape != null){
-            if (command.get(0).equals("COLOR")) {
-                String color = command.get(1);
-                if (validateColor(color)) {
-                    changeColor(color);
-                    saveCommand(new Color());
-                } else {
-                    System.out.println(color + " is an invalid color");
-                }
+    public boolean execute(ArrayList<String> command) {
+        if (checkSelected()) {
+            String color = command.get(1);
+            if (validateColor(color)) {
+                changeColor(color);
+                return true;
+            } else {
+                System.out.println(color + " is an invalid color");
             }
         } else {
             System.out.println("Error: No shape selected.");
         }
+        return false;
     }
 
     private static boolean validateColor(String color) {
@@ -42,11 +38,11 @@ public class Color extends Commands{
     }
 
     private static void changeColor(String color) {
-        updateColor(color);
+        previousColor = updateColor(color);
     }
 
 
      public void undo(){
-        selectedShape.setColor(previousColor);
+        updateColor(previousColor);
      }
 }

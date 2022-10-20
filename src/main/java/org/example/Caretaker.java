@@ -1,7 +1,6 @@
 package org.example;
 
 import org.example.Commands.Commands;
-import org.example.Shapes.Shape;
 
 import java.util.Stack;
 

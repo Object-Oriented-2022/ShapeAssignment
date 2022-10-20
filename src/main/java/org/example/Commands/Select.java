@@ -8,11 +8,11 @@ import static org.example.ListHandler.State.resetShape;
 
 public class Select {
 
-
+    //TODO: EXTEND COMMANDS
+    //TODO: RETURN BOOLEAN
+    //TODO: IMPLEMENT EXECUTE
     public static void select(ArrayList<String> command) {
-        if (command.get(0).equals("SELECT")) {
-            selectShape(command.get(1));
-        }
+        selectShape(command.get(1));
     }
 
     private static void selectShape(String shapeID) {

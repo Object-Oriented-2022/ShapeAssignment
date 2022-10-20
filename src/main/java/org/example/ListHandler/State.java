@@ -9,8 +9,12 @@ public class State {
     public static LinkedList<Shape> existingShapes = new LinkedList<>();
     //stack here for handling list of commands for current state to undo
 
-    public static void checkSelected(){
-        //throw error
+    public static boolean checkSelected(){
+        if(selectedShape != null) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public static void addShape(Shape shape){
@@ -25,8 +29,10 @@ public class State {
         return selectedShape.getColor();
     }
 
-    public static void updateColor(String color){
+    public static String updateColor(String color){
+        String previousColor = selectedShape.getColor();
         selectedShape.setColor(color);
+        return previousColor;
     }
 
     public static void drawShape(Shape shape){

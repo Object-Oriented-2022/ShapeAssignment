@@ -13,15 +13,17 @@ public class Create {
     private static int creationNumber = 0;
     private static Shape previousCreation = null;
 
+    //TODO: EXTEND COMMANDS
+    //TODO: RETURN BOOLEAN
+    //TODO: IMPLEMENT EXECUTE
+
     public static void create(ArrayList<String> command){
-        if(command.get(0).equals("CREATE")) {
-            if(command.get(1).equals("RECTANGLE")) {
-                createRectangle(command);
-            } else if (command.get(1).equals("CIRCLE")) {
-                createCircle(command);
-            } else {
-                System.out.println("Shape does not exist!");
-            }
+        if(command.get(1).equals("RECTANGLE")) {
+            createRectangle(command);
+        } else if (command.get(1).equals("CIRCLE")) {
+            createCircle(command);
+        } else {
+            System.out.println("Shape does not exist!");
         }
     }
 
