@@ -21,10 +21,15 @@ public class EventHandler {
         */
         Create.create(command);
         Select.select(command);
-        Color.color(command);
+
+        Commands color = new Color();
+        color.execute(command);
+
         Move.move(command);
         Draw.draw(command);
         DrawScene.drawScene(command);
         Delete.delete(command);
+        Undo.execute(command);
+
     }
 }

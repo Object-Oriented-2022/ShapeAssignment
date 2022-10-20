@@ -9,6 +9,10 @@ public class State {
     public static LinkedList<Shape> existingShapes = new LinkedList<>();
     //stack here for handling list of commands for current state to undo
 
+    public static void checkSelected(){
+        //throw error
+    }
+
     public static void addShape(Shape shape){
         existingShapes.add(shape);
     }
