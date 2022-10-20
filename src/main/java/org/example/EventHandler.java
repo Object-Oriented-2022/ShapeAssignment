@@ -21,7 +21,7 @@ public class EventHandler {
                        but how do we reassign the previous previous color?
         */
         //Commands successfulCommand;
-        boolean success = false;
+        boolean success;
         switch(command.get(0)){
             case "CREATE":
                 Create.create(command);
@@ -40,10 +40,12 @@ public class EventHandler {
                 Move.move(command);
                 break;
             case "DRAW":
-                Draw.draw(command);
+                Commands draw = new Draw();
+                draw.execute(command);
                 break;
             case "DRAWSCENE":
-                DrawScene.drawScene(command);
+                Commands drawscene = new DrawScene();
+                drawscene.execute(command);
                 break;
             case "DELETE":
                 Delete.delete(command);
