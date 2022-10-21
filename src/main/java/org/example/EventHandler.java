@@ -27,7 +27,11 @@ public class EventHandler {
                 Create.create(command);
                 break;
             case "SELECT":
-                Select.select(command);
+                Commands select = new Select();
+                success = select.execute(command);
+                if(success){
+                    saveCommand(select);
+                }
                 break;
             case "COLOR":
                 Commands color = new Color();
@@ -37,7 +41,11 @@ public class EventHandler {
                 }
                 break;
             case "MOVE":
-                Move.move(command);
+                Commands move = new Move();
+                success = move.execute(command);
+                if(success){
+                    saveCommand(move);
+                }
                 break;
             case "DRAW":
                 Commands draw = new Draw();

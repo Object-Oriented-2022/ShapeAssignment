@@ -29,10 +29,22 @@ public class State {
         return selectedShape.getColor();
     }
 
+    public static String updateOrigin(String origin){
+        String previousOrigin = selectedShape.getOrigin();
+        selectedShape.setOrigin(origin);
+        return previousOrigin;
+    }
+
     public static String updateColor(String color){
         String previousColor = selectedShape.getColor();
         selectedShape.setColor(color);
         return previousColor;
+    }
+
+    public static String updateSelect(String shapeID){
+        String previousSelect = String.valueOf(selectedShape.getID());
+        selectedShape.setID(Integer.parseInt(shapeID));
+        return previousSelect;
     }
 
     public static void drawShape(Shape shape){
