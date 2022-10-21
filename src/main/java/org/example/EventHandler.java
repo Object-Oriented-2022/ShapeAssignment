@@ -56,7 +56,11 @@ public class EventHandler {
                 drawscene.execute(command);
                 break;
             case "DELETE":
-                Delete.delete(command);
+                Commands delete = new Delete();
+                success = delete.execute(command);
+                if(success){
+                    saveCommand(delete);
+                }
                 break;
             case "UNDO":
                 Commands undo = new Undo();

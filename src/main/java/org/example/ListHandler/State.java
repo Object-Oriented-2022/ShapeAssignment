@@ -47,6 +47,17 @@ public class State {
         return previousSelect;
     }
 
+    public static boolean updateDelete(Shape shape){
+        int shapeID = shape.getID();
+        for(int i = 0; i < existingShapes.size(); i++) {
+            if (existingShapes.get(i).getID() == shapeID - 1) {
+                existingShapes.add(i + 1, shape);
+                return true;
+            }
+        }
+        return false;
+    }
+
     public static void drawShape(Shape shape){
         System.out.println(shape.toString());
     }
@@ -66,8 +77,6 @@ public class State {
         if(!output){
             System.out.println("Selected Shape does not exist");
         }
-        //TODO: PREVIOUS SELECTED IN STATE OR IN SELECT? is it undo in select?
-        //resetSelected();
     }
 
     /*TODO REMOVE OR FINISH

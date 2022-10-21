@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import static org.example.ListHandler.State.*;
 
 public class Move extends Commands{
-    //TODO: FIRST
+    //TODO: DONE
     private static String previousOrigin;
     public Move(){
         previousOrigin = "";

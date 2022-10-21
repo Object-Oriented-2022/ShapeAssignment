@@ -11,7 +11,7 @@ import java.util.Arrays;
 public class App
 {
     public static void main( String[] args ) throws IOException {
-        File file = new File("input.txt");
+        File file = new File("input2.txt");
         BufferedReader br = new BufferedReader(new FileReader(file));
         ArrayList<String> input = new ArrayList<>();
         String tmp;

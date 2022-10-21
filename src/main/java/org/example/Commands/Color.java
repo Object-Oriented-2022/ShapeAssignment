@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import static org.example.ListHandler.State.*;
 
 public class Color extends Commands{
-
+    //TODO: DONE
     private static final String[] validColors = {"Red", "Blue", "Yellow", "Orange", "Green"};
     private static String previousColor;
 

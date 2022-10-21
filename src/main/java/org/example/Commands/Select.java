@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import static org.example.ListHandler.State.*;
 
 public class Select extends Commands{
+    //TODO: DONE
+
     private static String previousSelect;
     public Select(){
         previousSelect = "";
