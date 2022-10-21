@@ -1,15 +1,17 @@
 package org.example.Commands;
 
 import java.util.ArrayList;
+import java.util.Stack;
+
 import static org.example.ListHandler.State.*;
 
 public class Color extends Commands{
-    //TODO: DONE
+    //TODO: COLOR UNDO JUST USES A STACK
     private static final String[] validColors = {"Red", "Blue", "Yellow", "Orange", "Green"};
-    private static String previousColor;
+    private static Stack<String> previousColor = new Stack<>();
 
     public Color(){
-        previousColor = "";
+
     }
     public boolean execute(ArrayList<String> command) {
         if (checkSelected()) {
@@ -38,11 +40,11 @@ public class Color extends Commands{
     }
 
     private static void changeColor(String color) {
-        previousColor = updateColor(color);
+        previousColor.push(updateColor(color));
     }
 
 
      public void undo(){
-        updateColor(previousColor);
+        updateColor(previousColor.pop());
      }
 }
