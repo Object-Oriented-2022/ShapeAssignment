@@ -9,12 +9,12 @@ public class DrawScene extends Commands{
     public DrawScene(){
     }
 
-    public boolean execute(ArrayList<String> command){
+    public Object execute(ArrayList<String> command){
         drawExistingShapes();
         return true;
     }
 
-    public void undo() {
+    public void undo(Object previous) {
         //Do nothing
     }
 

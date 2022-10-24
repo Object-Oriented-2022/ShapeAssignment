@@ -8,7 +8,7 @@ import static org.example.ListHandler.State.drawSelectedShape;
 public class Draw extends Commands{
 
     public Draw(){}
-    public boolean execute(ArrayList<String> command){
+    public Object execute(ArrayList<String> command){
         if(checkSelected()){
             drawSelectedShape();
             return true;
@@ -18,7 +18,7 @@ public class Draw extends Commands{
         return false;
     }
 
-    public void undo() {
+    public void undo(Object previous) {
         //Do nothing
     }
 

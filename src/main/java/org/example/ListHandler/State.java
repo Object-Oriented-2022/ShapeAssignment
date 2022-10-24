@@ -10,11 +10,7 @@ public class State {
     //stack here for handling list of commands for current state to undo
 
     public static boolean checkSelected(){
-        if(selectedShape != null) {
-            return true;
-        } else {
-            return false;
-        }
+        return selectedShape != null;
     }
 
     public static void addShape(Shape shape){
@@ -23,10 +19,6 @@ public class State {
 
     public static void resetShape(){
         selectedShape = null;
-    }
-
-    public static String getCurrentColor(){
-        return selectedShape.getColor();
     }
 
     public static String updateOrigin(String origin){
@@ -42,18 +34,26 @@ public class State {
     }
 
     public static String updateSelect(String shapeID){
+        int newID = Integer.parseInt(shapeID);
         String previousSelect = String.valueOf(selectedShape.getID());
-        selectedShape.setID(Integer.parseInt(shapeID));
+        for (Shape existingShape : existingShapes) {
+            if (existingShape.getID() == newID) {
+                selectedShape = existingShape;
+                break;
+            }
+        }
         return previousSelect;
     }
 
     public static boolean updateDelete(Shape shape){
         int shapeID = shape.getID();
-        for(int i = 0; i < existingShapes.size(); i++) {
+        int i = 0;
+        while (i < existingShapes.size()) {
             if (existingShapes.get(i).getID() == shapeID - 1) {
                 existingShapes.add(i + 1, shape);
                 return true;
             }
+            i++;
         }
         return false;
     }
@@ -79,11 +79,11 @@ public class State {
         }
     }
 
-    /*TODO REMOVE OR FINISH
-    private static void resetSelected() {
-
-    }*/
-
-
+    public static void undoCreation(Shape previous) {
+        boolean output = existingShapes.remove(previous);
+        if(!output){
+            System.out.println("Selected Shape does not exist");
+        }
+    }
 }
 

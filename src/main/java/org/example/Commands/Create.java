@@ -6,18 +6,20 @@ import org.example.Shapes.Shape;
 
 import java.util.ArrayList;
 
-import static org.example.ListHandler.State.addShape;
+import static org.example.ListHandler.State.*;
 
-public class Create {
+public class Create extends Commands{
 
     private static int creationNumber = 0;
     private static Shape previousCreation = null;
 
-    //TODO: EXTEND COMMANDS
-    //TODO: RETURN BOOLEAN
-    //TODO: IMPLEMENT EXECUTE
+    //TODO: UNDO
 
-    public static void create(ArrayList<String> command){
+    public Create(){
+
+    }
+
+    public Object execute(ArrayList<String> command){
         if(command.get(1).equals("RECTANGLE")) {
             createRectangle(command);
         } else if (command.get(1).equals("CIRCLE")) {
@@ -25,6 +27,7 @@ public class Create {
         } else {
             System.out.println("Shape does not exist!");
         }
+        return previousCreation;
     }
 
     private static void createRectangle(ArrayList<String> command) {
@@ -46,9 +49,9 @@ public class Create {
         previousCreation = circle;
     }
 
-    /*TODO: CREATE UNDO
-     private static void undo(){
-        //resetSelected to previous SELECTED
-     }*/
+
+     public void undo(Object previous){
+        undoCreation((Shape) previous);
+     }
 
 }

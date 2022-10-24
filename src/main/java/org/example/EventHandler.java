@@ -21,56 +21,60 @@ public class EventHandler {
                        but how do we reassign the previous previous color?
         */
         //Commands successfulCommand;
-        boolean success;
-        switch(command.get(0)){
-            case "CREATE":
-                Create.create(command);
-                break;
-            case "SELECT":
+        Object previous;
+        switch (command.get(0)) {
+            case "CREATE" -> {
+                Commands create = new Create();
+                previous = create.execute(command);
+                if (previous != null) {
+                    saveCommand(create, previous);
+                } else {
+                    System.out.println("Error Creating, shape DNE");
+                }
+            }
+            case "SELECT" -> {
                 Commands select = new Select();
-                success = select.execute(command);
-                if(success){
-                    saveCommand(select);
+                previous = select.execute(command);
+                if (previous != null) {
+                    saveCommand(select, previous);
                 }
-                break;
-            case "COLOR":
+            }
+            case "COLOR" -> {
                 Commands color = new Color();
-                success = color.execute(command);
-                if(success){
-                    saveCommand(color);
+                previous = color.execute(command);
+                if (previous != null) {
+                    saveCommand(color, previous);
                 }
-                break;
-            case "MOVE":
+            }
+            case "MOVE" -> {
                 Commands move = new Move();
-                success = move.execute(command);
-                if(success){
-                    saveCommand(move);
+                previous = move.execute(command);
+                if (previous != null) {
+                    saveCommand(move, previous);
                 }
-                break;
-            case "DRAW":
+            }
+            case "DRAW" -> {
                 Commands draw = new Draw();
                 draw.execute(command);
-                break;
-            case "DRAWSCENE":
+            }
+            case "DRAWSCENE" -> {
                 Commands drawscene = new DrawScene();
                 drawscene.execute(command);
-                break;
-            case "DELETE":
+            }
+            case "DELETE" -> {
                 Commands delete = new Delete();
-                success = delete.execute(command);
-                if(success){
-                    saveCommand(delete);
+                previous = delete.execute(command);
+                if (previous != null) {
+                    saveCommand(delete, previous);
                 }
-                break;
-            case "UNDO":
+            }
+            case "UNDO" -> {
                 Commands undo = new Undo();
-                if(!undo.execute(command)){
+                if (undo.execute(command) == null) {
                     System.out.println("Error Undoing.");
                 }
-                break;
-            default:
-                System.out.println("Command DNE");
-                break;
+            }
+            default -> System.out.println("Command DNE");
         }
     }
 }

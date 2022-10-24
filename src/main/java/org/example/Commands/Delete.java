@@ -14,14 +14,13 @@ public class Delete extends Commands{
        previousDeleted = null;
     }
 
-    public boolean execute(ArrayList<String> command){
+    public Object execute(ArrayList<String> command){
         if(checkSelected()){
             deleteShape();
-            return true;
         } else {
             System.out.println("No shape selected, cannot delete!");
         }
-        return false;
+        return previousDeleted;
     }
 
     private static void deleteShape() {
@@ -30,8 +29,8 @@ public class Delete extends Commands{
         resetShape();
     }
 
-    public void undo(){
-        if(!updateDelete(previousDeleted)){
+    public void undo(Object previous){
+        if(!updateDelete((Shape) previous)){
             System.out.println("Error: unable to undo delete.");
         }
     }

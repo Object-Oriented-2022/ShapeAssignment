@@ -6,17 +6,25 @@ import java.util.Stack;
 
 public class Caretaker {
 
-    private static Stack<Commands> mementoObjects = new Stack<>();
+    private static Stack<Memento> mementoObjects = new Stack<>();
 
     //hitSave();
-    public static void saveCommand(Commands command){
-        mementoObjects.push(command);
+    public static void saveCommand(Commands command, Object previous){
+        Memento history = new Memento(command, previous);
+        mementoObjects.push(history);
     }
 
     //hitUndo();
     public static void undoCommand(){
-        Commands command = mementoObjects.pop();
-        command.undo();
+        if(mementoObjects.size() > 0){
+            Memento memento = mementoObjects.pop();
+            Commands command = memento.getCommand();
+            Object previous = memento.getPrevious();
+            command.undo(previous);
+        }
+        else{
+            System.out.println("No more commands to undo.");
+        }
     }
 
 

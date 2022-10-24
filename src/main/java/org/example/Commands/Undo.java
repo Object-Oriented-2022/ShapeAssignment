@@ -10,8 +10,7 @@ public class Undo extends Commands{
         //Empty
     }
 
-    //TODO: CHANGE undoCommand TO RETURN BOOLEAN
-    public boolean execute(ArrayList<String> command) {
+    public Object execute(ArrayList<String> command) {
         if(command.get(0).equals("UNDO")){
             undoCommand();
             return true;
@@ -19,7 +18,7 @@ public class Undo extends Commands{
         return false;
     }
 
-    public void undo() {
+    public void undo(Object previous) {
         //do nothing
     }
 }

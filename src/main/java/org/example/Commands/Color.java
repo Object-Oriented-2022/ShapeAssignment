@@ -1,31 +1,30 @@
 package org.example.Commands;
 
 import java.util.ArrayList;
-import java.util.Stack;
 
 import static org.example.ListHandler.State.*;
 
 public class Color extends Commands{
-    //TODO: COLOR UNDO JUST USES A STACK
+
     private static final String[] validColors = {"Red", "Blue", "Yellow", "Orange", "Green"};
-    private static Stack<String> previousColor = new Stack<>();
+    private static String previousColor;
 
     public Color(){
 
     }
-    public boolean execute(ArrayList<String> command) {
+    public Object execute(ArrayList<String> command) {
         if (checkSelected()) {
             String color = command.get(1);
             if (validateColor(color)) {
                 changeColor(color);
-                return true;
+                return previousColor;
             } else {
                 System.out.println(color + " is an invalid color");
             }
         } else {
             System.out.println("Error: No shape selected.");
         }
-        return false;
+        return null;
     }
 
     private static boolean validateColor(String color) {
@@ -40,11 +39,11 @@ public class Color extends Commands{
     }
 
     private static void changeColor(String color) {
-        previousColor.push(updateColor(color));
+        previousColor = updateColor(color);
     }
 
 
-     public void undo(){
-        updateColor(previousColor.pop());
+     public void undo(Object previous){
+        updateColor((String) previous);
      }
 }
