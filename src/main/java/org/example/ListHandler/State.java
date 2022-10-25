@@ -38,8 +38,11 @@ public class State {
         if(selectedShape != null) {
             previousSelect = String.valueOf(selectedShape.getID());
         }
-        selectedShape = existingShapes.get(newIndex);
-        return  previousSelect;
+        if(newIndex < existingShapes.size())
+            selectedShape = existingShapes.get(newIndex);
+        else
+            System.out.println("ERROR: invalid shape for SELECT");
+        return previousSelect;
     }
 
     public static boolean updateDelete(Shape shape){
