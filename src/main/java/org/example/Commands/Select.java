@@ -10,9 +10,31 @@ public class Select extends Commands{
     //TODO: Double check undo
 
     private static String previousSelect;
+
+    public Object execute(ArrayList<String> command) {
+        if(!checkSelected()){
+            updateSelect(command.get(1));
+        } else {
+            previousSelect = updateSelect(command.get(1));
+        }
+        return previousSelect;
+    }
+
+    public void undo(Object previous) {
+        if(!previous.equals("")){
+            updateSelect((String) previous);
+        } else {
+            resetShape();
+        }
+    }
+
     public Select(){
         previousSelect = "";
     }
+
+
+
+    /*
     public Object execute(ArrayList<String> command) {
         if(!checkSelected()){
             selectShape(command.get(1));
@@ -26,6 +48,7 @@ public class Select extends Commands{
 
     private static void selectShape(String shapeID) {
         int newID = Integer.parseInt(shapeID);
+        //previousSelect = updateSelect(shapeID);
         for (Shape existingShape : existingShapes) {
             if (existingShape.getID() == newID) {
                 selectedShape = existingShape;
@@ -45,5 +68,5 @@ public class Select extends Commands{
         } else {
             resetShape();
         }
-    }
+    }*/
 }

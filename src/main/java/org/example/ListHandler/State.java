@@ -34,6 +34,14 @@ public class State {
     }
 
     public static String updateSelect(String shapeID){
+        int newIndex = Integer.parseInt(shapeID);
+        String previousSelect = "";
+        if(selectedShape != null) {
+            previousSelect = String.valueOf(selectedShape.getID());
+        }
+        selectedShape = existingShapes.get(newIndex);
+        return  previousSelect;
+        /*
         int newID = Integer.parseInt(shapeID);
         String previousSelect = String.valueOf(selectedShape.getID());
         for (Shape existingShape : existingShapes) {
@@ -42,9 +50,10 @@ public class State {
                 break;
             }
         }
-        return previousSelect;
+        return previousSelect;*/
     }
 
+    //TODO: change
     public static boolean updateDelete(Shape shape){
         int shapeID = shape.getID();
         int i = 0;
