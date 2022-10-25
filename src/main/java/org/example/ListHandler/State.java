@@ -7,7 +7,6 @@ import java.util.LinkedList;
 public class State {
     public static Shape selectedShape = null;
     public static LinkedList<Shape> existingShapes = new LinkedList<>();
-    //stack here for handling list of commands for current state to undo
 
     public static boolean checkSelected(){
         return selectedShape != null;
@@ -34,37 +33,19 @@ public class State {
     }
 
     public static String updateSelect(String shapeID){
-        int newIndex = Integer.parseInt(shapeID);
+        int newIndex = Integer.parseInt(shapeID) - 1;
         String previousSelect = "";
         if(selectedShape != null) {
             previousSelect = String.valueOf(selectedShape.getID());
         }
         selectedShape = existingShapes.get(newIndex);
         return  previousSelect;
-        /*
-        int newID = Integer.parseInt(shapeID);
-        String previousSelect = String.valueOf(selectedShape.getID());
-        for (Shape existingShape : existingShapes) {
-            if (existingShape.getID() == newID) {
-                selectedShape = existingShape;
-                break;
-            }
-        }
-        return previousSelect;*/
     }
 
-    //TODO: change
     public static boolean updateDelete(Shape shape){
-        int shapeID = shape.getID();
-        int i = 0;
-        while (i < existingShapes.size()) {
-            if (existingShapes.get(i).getID() == shapeID - 1) {
-                existingShapes.add(i + 1, shape);
-                return true;
-            }
-            i++;
-        }
-        return false;
+        int indexPos = shape.getID();
+        existingShapes.add(indexPos, shape);
+        return true;
     }
 
     public static void drawShape(Shape shape){
@@ -81,11 +62,16 @@ public class State {
         }
     }
 
-    public static void removeFromExisting(){
+    public static Shape removeFromExisting(){
+        int previousPosition = existingShapes.indexOf(selectedShape);
+        selectedShape.setID(previousPosition);
+        Shape previousShape = selectedShape;
         boolean output = existingShapes.remove(selectedShape);
         if(!output){
             System.out.println("Selected Shape does not exist");
+            return null;
         }
+        return previousShape;
     }
 
     public static void undoCreation(Shape previous) {

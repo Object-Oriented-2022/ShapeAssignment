@@ -24,8 +24,7 @@ public class Delete extends Commands{
     }
 
     private static void deleteShape() {
-        previousDeleted = selectedShape;
-        removeFromExisting();
+        previousDeleted = removeFromExisting();
         resetShape();
     }
 

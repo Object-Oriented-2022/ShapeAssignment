@@ -13,8 +13,6 @@ public class Create extends Commands{
     private static int creationNumber = 0;
     private static Shape previousCreation = null;
 
-    //TODO: UNDO
-
     public Create(){
 
     }
